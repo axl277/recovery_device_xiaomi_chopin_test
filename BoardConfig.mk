@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/xiaomi/ares
+DEVICE_PATH := device/xiaomi/chopin
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
@@ -33,7 +33,7 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a55
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := ares
+TARGET_BOOTLOADER_BOARD_NAME := chopin
 TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 
@@ -41,7 +41,7 @@ TARGET_USES_UEFI := true
 TARGET_BOARD_PLATFORM := mt6893
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := ares,aresin
+TARGET_OTA_ASSERT_DEVICE := chopin,choping
 
 # Kernel
 BOARD_BOOTIMG_HEADER_VERSION := 2
@@ -64,7 +64,7 @@ BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 
 BOARD_KERNEL_IMAGE_NAME := kernel
-TARGET_KERNEL_CONFIG := ares_user_defconfig
+TARGET_KERNEL_CONFIG := chopin_user_defconfig
 
 # AVB
 BOARD_AVB_ENABLE := true
@@ -161,7 +161,7 @@ TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_DEFAULT_BRIGHTNESS := 1200
-TW_DEVICE_VERSION := by AYIKxD
+TW_DEVICE_VERSION := by Axlorin
 TW_EXCLUDE_APEX := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_EXTRA_LANGUAGES := true
@@ -173,7 +173,7 @@ TW_MAX_BRIGHTNESS := 2047
 TW_SCREEN_BLANK_ON_BOOT:= true
 TW_THEME := portrait_hdpi
 TWRP_INCLUDE_LOGCAT := true
-TW_OF_MAINTAINER="AYIKxD"
+TW_OF_MAINTAINER="Axlorin"
 
 # StatusBar
 TW_STATUS_ICONS_ALIGN := center
