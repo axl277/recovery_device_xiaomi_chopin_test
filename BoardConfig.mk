@@ -187,7 +187,7 @@ TARGET_USES_MKE2FS := true
 TW_NO_SCREEN_BLANK := true
 
 # Haptics & Vibrator
+# Vibrator / Haptics
 TW_SUPPORT_VIBRATOR := true
-TW_VIBRATOR_PATH := "/sys/bus/i2c/drivers/aw8697_haptic"
-# Atau bisa juga coba:
-# TW_VIBRATOR_PATH := "/sys/class/leds/awinic_vibrator"
+TW_VIBRATOR_PATH := "/sys/class/leds/vibrator/activate"
+TW_VIBRATOR_MAX_INTENSITY := 255
