@@ -121,3 +121,10 @@ on property:twrp.modules.loaded=true
 on boot
     start boot-hal-1-2
     start health-hal-2-1
+
+on boot
+    # Flashlight
+    chown system system /sys/class/leds/torch-light0/brightness
+    chmod 0666 /sys/class/leds/torch-light0/brightness
+    chown system system /sys/class/leds/torch-light1/brightness
+    chmod 0666 /sys/class/leds/torch-light1/brightness
