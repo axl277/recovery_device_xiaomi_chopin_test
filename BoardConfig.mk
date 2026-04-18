@@ -176,23 +176,14 @@ TW_THEME := portrait_hdpi
 TWRP_INCLUDE_LOGCAT := true
 TW_OF_MAINTAINER="Axlorin"
 
-# Torch
-TW_FLASHLIGHT_DEFAULT_PATH := "/sys/class/leds/torch-light0"
-
 # StatusBar
 TW_STATUS_ICONS_ALIGN := center
-TW_CUSTOM_CPU_POS := "300"
-TW_CUSTOM_CLOCK_POS := "70"
-TW_CUSTOM_BATTERY_POS := "790"
-PB_OFFSET_Y := 60
-TW_Y_OFFSET := 60
-TW_H_OFFSET := -60
+TW_CUSTOM_CPU_POS := "60"
+TW_CUSTOM_CLOCK_POS := "510"
+TW_CUSTOM_BATTERY_POS := "840"
+PB_OFFSET_Y := 85
+TW_Y_OFFSET := 80
+TW_H_OFFSET := -80
 PB_OFFSET_X := 0
 TARGET_USES_MKE2FS := true
 TW_NO_SCREEN_BLANK := true
-
-# Haptics & Vibrator
-# Vibrator / Haptics
-TW_SUPPORT_VIBRATOR := true
-TW_VIBRATOR_PATH := "/sys/class/leds/vibrator/activate"
-TW_VIBRATOR_MAX_INTENSITY := 255
