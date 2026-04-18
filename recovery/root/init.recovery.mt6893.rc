@@ -1,6 +1,9 @@
 # Beanpod
 import /microtrust.rc
 
+# Vibration
+import /vibratorfeature-hal-service.rc
+
 # Mitee
 import /miteelog.rc
 import /tee-supplicant.rc
@@ -114,27 +117,9 @@ on property:twrp.decrypt.done=true
     stop keymaster-4-0-mitee
     stop gatekeeper-1-0   
 
-# Haptic feedback 
-on property:twrp.modules.loaded=true 
-    start vibratorfeature-hal-service
-
 on boot
     start boot-hal-1-2
     start health-hal-2-1
+    start vibratorfeature-hal-service
+    start variant-script
 
-on boot
-    # Vibrator
-    chown system system /sys/class/leds/vibrator/activate
-    chown system system /sys/class/leds/vibrator/duration
-    chmod 0666 /sys/class/leds/vibrator/activate
-    chmod 0666 /sys/class/leds/vibrator/duration
-
-    on boot
-    # Permission fo flashlight
-    chown system system /sys/class/leds/torch-light0/brightness
-    chmod 0666 /sys/class/leds/torch-light0/brightness
-    chown system system /sys/class/leds/led:switch_0/brightness
-    chmod 0666 /sys/class/leds/led:switch_0/brightness
-
-    # Flashlight
-    write /sys/class/leds/led:switch_0/brightness 1
