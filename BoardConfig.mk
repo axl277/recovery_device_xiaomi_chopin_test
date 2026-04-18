@@ -176,6 +176,9 @@ TW_THEME := portrait_hdpi
 TWRP_INCLUDE_LOGCAT := true
 TW_OF_MAINTAINER="Axlorin"
 
+# Torch
+TW_FLASHLIGHT_DEFAULT_PATH := "/sys/class/leds/torch-light0"
+
 # StatusBar
 TW_STATUS_ICONS_ALIGN := center
 TW_CUSTOM_CPU_POS := "300"
