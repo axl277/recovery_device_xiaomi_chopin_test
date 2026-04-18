@@ -188,4 +188,6 @@ TW_NO_SCREEN_BLANK := true
 
 # Haptics & Vibrator
 TW_SUPPORT_VIBRATOR := true
-TW_VIBRATOR_PATH := "/sys/class/leds/vibrator/activate"
+TW_VIBRATOR_PATH := "/sys/bus/i2c/drivers/aw8697_haptic"
+# Atau bisa juga coba:
+# TW_VIBRATOR_PATH := "/sys/class/leds/awinic_vibrator"
