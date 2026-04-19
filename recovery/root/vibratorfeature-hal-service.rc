@@ -1,0 +1,7 @@
+service vibratorfeature-hal-service /system/bin/hw/vendor.xiaomi.hardware.vibratorfeature.service
+    class hal 
+    user root 
+    group root input 
+    disabled 
+    oneshot
+    seclabel u:r:recovery:s0
