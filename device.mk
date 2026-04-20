@@ -79,3 +79,9 @@ TARGET_RECOVERY_DEVICE_MODULES += \
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
+
+# Vibrator HAL
+   PRODUCT_PACKAGES += \
+       android.hardware.vibrator@1.0-impl \
+       android.hardware.vibrator@1.0-service \
+       vendor.xiaomi.hardware.vibratorfeature@1.0-service
