@@ -157,10 +157,17 @@ TW_NO_FASTBOOT_BOOT := true
 TW_FRAMERATE := 120
 
 # Vibration Support
-   TW_USE_TWRP_VIBRATE_FLAG := true
-   TW_SUPPORT_INPUT_AIDL_HAPTICS := true
-   TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/vibratorfeature"
-   TW_VIBRATOR_TIMEOUT_MS := 25
+TW_USE_TWRP_VIBRATE_FLAG := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/vibratorfeature"   
+TW_VIBRATOR_TIMEOUT_MS := 25
+
+# AW8697 Vibrator Support
+TW_VIBRATOR_PATH := "/sys/devices/platform/odm/odm:vibrator@0/active"
+TW_USE_TWRP_VIBRATE_FLAG := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/vibratorfeature"
+TW_VIBRATOR_TIMEOUT_MS := 25
 
 # Debug
 TWRP_INCLUDE_LOGCAT := true
