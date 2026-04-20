@@ -114,10 +114,14 @@ on property:twrp.decrypt.done=true
     stop keymaster-4-0-mitee
     stop gatekeeper-1-0   
 
-# Haptic feedback 
-on property:twrp.modules.loaded=true 
-    start vibratorfeature-hal-service
+service vibratorfeature-hal-service /vendor/bin/hw/vendor.xiaomi.hardware.vibratorfeature.service
+       class hal
+       user system
+       group system input
+       oneshot
 
-on boot
-    start boot-hal-1-2
-    start health-hal-2-1
+   on property:twrp.modules.loaded=true
+       start vibratorfeature-hal-service
+
+   on boot
+       start vibratorfeature-hal-service
