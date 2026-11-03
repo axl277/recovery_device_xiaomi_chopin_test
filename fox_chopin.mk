@@ -3,11 +3,6 @@
 # Copyright (C) 2023 The OrangeFox Recovery Project
 #
 
-# Base configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
-
 # OrangeFox-specific settings
 OF_DONT_PATCH_ENCRYPTED_DEVICE := 1
 OF_NO_TREBLE_COMPATIBILITY_CHECK := 1
