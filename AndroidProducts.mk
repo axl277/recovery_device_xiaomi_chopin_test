@@ -7,4 +7,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/fox_chopin.mk
+    $(LOCAL_DIR)/twrp_chopin.mk
+
+COMMON_LUNCH_CHOICES := \
+    twrp_chopin-eng
