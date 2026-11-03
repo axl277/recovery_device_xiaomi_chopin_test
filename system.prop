@@ -1,4 +1,11 @@
+# System Properties for Xiaomi Chopin (MT6891) - PBRP/TWRP
+
+# Encryption filename mode for FBE v2
 ro.crypto.volume.filenames_mode=aes-256-cts
+
+# Default USB Storage Type
 ro.sys.usb.storage.type=mtp
+
+# MediaTek TEE Hardware Security (Required for Keymaster/Keymint Decryption)
 ro.vendor.mtk_tee_gp_support=1
 ro.vendor.mtk_microtrust_tee_support=1
