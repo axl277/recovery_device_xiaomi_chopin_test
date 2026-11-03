@@ -109,10 +109,9 @@ BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USERIMAGES_USE_EXT4 := true
 
-# Dynamic Partitions (Includes mi_ext + Android 16 dlkm partitions)
 BOARD_SUPER_PARTITION_GROUPS := main
 BOARD_SUPER_PARTITION_SIZE := 9126805504
-BOARD_MAIN_PARTITION_LIST := product system system_ext vendor odm mi_ext vendor_dlkm system_dlkm
+BOARD_MAIN_PARTITION_LIST := product system system_ext vendor
 BOARD_MAIN_SIZE := 9122611200
 
 TARGET_COPY_OUT_PRODUCT := product
