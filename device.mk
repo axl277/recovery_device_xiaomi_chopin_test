@@ -14,20 +14,17 @@
 # limitations under the License.
 #
 
-# API
-PRODUCT_SHIPPING_API_LEVEL := 31
+# Specify API Shipping Level (Android 11 / API 30 for Xiaomi Chopin stock launch)
+PRODUCT_SHIPPING_API_LEVEL := 30
 
-# Dynamic
+# Enable Dynamic Partitions Support
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-# Enable project quotas and casefolding for emulated storage without sdcardfs
-#$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
-
-# A/B
+# Enable Virtual A/B OTA Support (Required if building for VAB ROMs)
 ENABLE_VIRTUAL_AB := true
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
-# A/B
+# A/B OTA Updater Packages
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS += \
     boot \
@@ -52,30 +49,42 @@ AB_OTA_POSTINSTALL_CONFIG += \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
 
-# Boot control HAL
+# MediaTek Boot Control HAL
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-mtkimpl.recovery \
     android.hardware.boot@1.2-mtkimpl \
     libmtk_bsg.recovery
-    
+
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
 
-# fastbootd
+# Fastbootd Daemon & HAL
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.0-impl-mock \
     fastbootd
-    
-# Health Hal
+
+# Health HAL Services
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
     android.hardware.health@2.1-service
 
-# Additional target Libraries
+# Keymaster & Keymint Decryption HALs (FBE v2 support for Android 14+)
+PRODUCT_PACKAGES += \
+    android.hardware.security.keymint-service \
+    android.hardware.gatekeeper@1.0-service \
+    android.hardware.gatekeeper@1.0-impl \
+    keystore.default \
+    vold_decrypt
+
+# Additional Target Decryption Libraries
 TARGET_RECOVERY_DEVICE_MODULES += \
     libkeymaster4 \
-    libpuresoftkeymasterdevice
+    libkeymaster41 \
+    libpuresoftkeymasterdevice \
+    libkeymint
 
+# Relink Required Shared Libraries into Recovery Ramdisk
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster41.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
