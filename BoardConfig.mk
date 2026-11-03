@@ -1,18 +1,6 @@
 #
 # Copyright (C) 2021 The TWRP Open Source Project
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
 
 DEVICE_PATH := device/xiaomi/chopin
 
@@ -89,13 +77,13 @@ BOARD_AVB_VBMETA_VENDOR_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX := 1
 BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX_LOCATION := 3
 
-# Encryption
+# Encryption (FBE v2 & Keymint support)
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true
 BOARD_USES_METADATA_PARTITION := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
 
-# Hack: prevent anti rollback
+# Anti rollback hack
 PLATFORM_SECURITY_PATCH := 2127-12-31
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 PLATFORM_VERSION := 99.87.36
@@ -109,8 +97,10 @@ BOARD_BOOTIMAGE_PARTITION_SIZE := 134217728
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 115234275328
 BOARD_DTBOIMG_PARTITION_SIZE := 33554432
 
-# File system
+# File system (Added EROFS for Android 16/17 ROMs)
 BOARD_HAS_LARGE_FILESYSTEM := true
+BOARD_HAS_EROFS := true
+TARGET_USERIMAGES_USE_EROFS := true
 BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -119,9 +109,10 @@ BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USERIMAGES_USE_EXT4 := true
 
+# Dynamic Partitions (Includes mi_ext + Android 16 dlkm partitions)
 BOARD_SUPER_PARTITION_GROUPS := main
 BOARD_SUPER_PARTITION_SIZE := 9126805504
-BOARD_MAIN_PARTITION_LIST := product system system_ext vendor
+BOARD_MAIN_PARTITION_LIST := product system system_ext vendor odm mi_ext vendor_dlkm system_dlkm
 BOARD_MAIN_SIZE := 9122611200
 
 TARGET_COPY_OUT_PRODUCT := product
@@ -132,35 +123,27 @@ TARGET_COPY_OUT_ODM := odm
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
 # Recovery
-BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_USES_RECOVERY_AS_BOOT := true
 TARGET_NO_RECOVERY := true
 
-# Root
+# Root & Treble
 BOARD_ROOT_EXTRA_FOLDERS += cust
-
-# System as root
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
-
-# Treble
 BOARD_VNDK_VERSION := current
 
-# TWRP specific build flags
+# PitchBlack / TWRP UI Configs
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.usb0/lun.%d/file
 TW_NO_FASTBOOT_BOOT := true
-
-# TWRP
 TW_FRAMERATE := 120
-
-# Debug
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_DEFAULT_BRIGHTNESS := 1200
+TW_MAX_BRIGHTNESS := 2047
 TW_DEVICE_VERSION := by Axlorin
 TW_EXCLUDE_APEX := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
@@ -169,12 +152,9 @@ TW_INCLUDE_REPACKTOOLS := true
 TW_INCLUDE_RESETPROP := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_INCLUDE_NTFS_3G := true
-TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
-TW_MAX_BRIGHTNESS := 2047
-TW_SCREEN_BLANK_ON_BOOT:= true
+TW_SCREEN_BLANK_ON_BOOT := true
 TW_THEME := portrait_hdpi
-TWRP_INCLUDE_LOGCAT := true
-TW_OF_MAINTAINER="Axlorin"
+TW_OF_MAINTAINER := "Axlorin"
 
 # StatusBar
 TW_STATUS_ICONS_ALIGN := center
