@@ -7,4 +7,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/pbrp_chopin.mk
+    $(LOCAL_DIR)/fox_chopin.mk
