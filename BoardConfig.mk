@@ -163,3 +163,9 @@ TW_CUSTOM_BATTERY_POS := 800
 TARGET_USES_MKE2FS := true
 TW_NO_SCREEN_BLANK := true
 TARGET_SCREEN_DENSITY := 440
+
+# Disable Vibrator / Haptic Feedback
+TW_NO_HAPTIC_FEEDBACK := true
+
+# Disable Flashlight / Torch Feature
+TW_HAS_LEDS_FLASHLIGHT := false
