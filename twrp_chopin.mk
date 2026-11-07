@@ -27,16 +27,12 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 # Device specific configs
 $(call inherit-product, device/xiaomi/chopin/device.mk)
 
+# Fox setting
+$(call inherit-product, device/xiaomi/chopin/fox_chopin.mk)
+
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := chopin
 PRODUCT_NAME := twrp_chopin
-PRODUCT_BRAND := POCO	
+PRODUCT_BRAND := POCO
 PRODUCT_MODEL := 21061110AG
 PRODUCT_MANUFACTURER := Xiaomi
-
-PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="POCO/chopin_global/chopin:12/SP1A.210812.016/V14.0.6.0.TKPMIXM:user/release-keys"
-
-BUILD_FINGERPRINT := Xiaomi/chopin/POCO/chopin_global/chopin:12/SP1A.210812.016/V14.0.6.0.TKPMIXM:user/release-keys
