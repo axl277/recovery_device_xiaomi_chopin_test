@@ -2,7 +2,7 @@
 # Copyright (C) 2021 The TWRP Open Source Project
 #
 
-# API Level (Restored to default value 31)
+# API Level
 PRODUCT_SHIPPING_API_LEVEL := 31
 
 # Dynamic Partitions
@@ -55,22 +55,11 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
     android.hardware.health@2.1-service
 
-# Keymaster & Keymint HALs for Android 16/17 FBE v2 Decryption
-PRODUCT_PACKAGES += \
-    android.hardware.security.keymint-service \
-    android.hardware.gatekeeper@1.0-service \
-    android.hardware.gatekeeper@1.0-impl \
-    keystore.default \
-    vold_decrypt
-
-# Libraries for Decryption
+# Additional target Libraries
 TARGET_RECOVERY_DEVICE_MODULES += \
     libkeymaster4 \
-    libkeymaster41 \
-    libpuresoftkeymasterdevice \
-    libkeymint
+    libpuresoftkeymasterdevice
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster41.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
